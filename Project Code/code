@@ -1,0 +1,113 @@
+import pandas as pd
+from datetime import datetime, timedelta
+from matplotlib import pyplot as plt
+from matplotlib import dates as mpl_dates
+
+###THIS PORTION IS FOR NORTH CAROLINA DATA
+#plt.style.use('ggplot')
+#data1 = pd.read_csv('North-Car.csv', sep=';')
+
+#newD = data1[data1['fatality']==1]
+#acc = data1[data1['fatality']==0]
+
+#clear = newD.loc[newD['weather'] =='CLEAR'].count()[0]
+#cloudy = newD.loc[newD['weather'] =='CLOUDY'].count()[0]
+#rain = newD.loc[newD['weather'] =='RAIN'].count()[0]
+#snow = newD.loc[newD['weather'] =='SNOW'].count()[0]
+
+#coarseA = newD.loc[newD['rdsurface'] =='COARSE ASPHALT'].count()[0]
+#smoothA = newD.loc[newD['rdsurface'] =='SMOOTH ASPHALT'].count()[0]
+#con = newD.loc[newD['rdsurface'] =='CONCRETE'].count()[0]
+#groCon = newD.loc[newD['rdsurface'] =='GROOVED CONCRETE'].count()[0]
+
+#plt.title('Fatalities in NC based on road surfaces.')
+
+#L = ['coarse asphalt', 'smooth asphalt', 'concrete', 'grooved concrete']
+#plt.pie([coarseA, smoothA, con, groCon], labels=L, autopct='%.2f %%')
+
+#L = ['clear', 'cloudy', 'rain']
+#plt.pie([clear, cloudy, rain], labels=L, autopct='%.2f %%')
+
+#plt.show()
+
+###CHICAGO DATA STARTS HERE
+
+#data2 = pd.read_csv('Chicago-Crashes.csv', dtype='unicode')
+
+#newD = data2[data2['INJURIES_FATAL']>'0']
+
+#This section tests road conditions with most accidents occuring on dry surfaces.
+#wet = newD.loc[newD['ROADWAY_SURFACE_COND'] =='WET'].count()[0]
+#dry = newD.loc[newD['ROADWAY_SURFACE_COND'] =='DRY'].count()[0]
+#ice = newD.loc[newD['ROADWAY_SURFACE_COND'] =='ICE'].count()[0]
+#snush = newD.loc[newD['ROADWAY_SURFACE_COND'] =='SNOW OR SLUSH'].count()[0]
+#myst = newD.loc[newD['ROADWAY_SURFACE_COND'] =='UNKNOWN'].count()[0]
+
+#This section tests for road defects and most accidents have no defective road conditions detected. 
+#one = newD.loc[newD['ROAD_DEFECT'] =='WORN SURFACE'].count()[0]
+#two = newD.loc[newD['ROAD_DEFECT'] =='NO DEFECTS'].count()[0]
+#three = newD.loc[newD['ROAD_DEFECT'] =='UNKNOWN'].count()[0]
+
+#Finally this area is for driver negligence.
+#d1 = newD.loc[newD['PRIM_CONTRIBUTORY_CAUSE'] =='FAILING TO REDUCE SPEED TO AVOID CRASH'].count()[0]
+#d2 = newD.loc[newD['PRIM_CONTRIBUTORY_CAUSE'] =='UNABLE TO DETERMINE'].count()[0]
+#d3 = newD.loc[newD['PRIM_CONTRIBUTORY_CAUSE'] =='FAILING TO YIELD RIGHT-OF-WAY'].count()[0]
+#d4 = newD.loc[newD['PRIM_CONTRIBUTORY_CAUSE'] =='DISREGARDING TRAFFIC SIGNALS'].count()[0]
+
+#plt.title('Fatalities (200) in Chicago based on driver actions.')
+
+#L = ['Failed to brake', 'Unknown', 'Not yeilding', 'ignoring traffic signals']
+#plt.pie([d1, d2, d3, d4], labels=L, autopct='%.2f %%')
+
+#plt.show()
+
+###MARYLAND DATA STARTS HERE
+
+#data3 = pd.read_csv('Maryland.csv', low_memory=False)
+#plt.style.use('fivethirtyeight')
+
+#l1 = data3.loc[data3['LIGHT_DESC'] =='Daylight'].count()[0]
+#l2 = data3.loc[data3['LIGHT_DESC'] =='Dark Lights On'].count()[0]
+#l3 = data3.loc[data3['LIGHT_DESC'] =='Unknown'].count()[0]
+
+
+#w1 = data3.loc[data3['WEATHER_DESC'] =='Not Applicable'].count()[0]
+#w2 = data3.loc[data3['WEATHER_DESC'] =='Clear'].count()[0]
+#w3 = data3.loc[data3['WEATHER_DESC'] =='Raining'].count()[0]
+#w4 = data3.loc[data3['WEATHER_DESC'] =='Cloudy'].count()[0]
+
+#plt.title('Incidents in Maryland based on weather conditions.')
+
+#L = ['Other','Clear', 'Raining', 'Cloudy']
+#e =(.12,0,0,0)
+#plt.pie([w1, w2, w3, w4], labels=L, autopct='%.2f %%', explode=e)
+
+#plt.show()
+
+data4 = pd.read_csv('Vermont.csv', low_memory=False)
+plt.style.use('seaborn-colorblind')
+#D = data4.loc[data4['DayNight'] =='Day'].count()[0]
+#N = data4.loc[data4['DayNight'] =='Night'].count()[0]  #most accidents occur during day 75/25%
+
+W1 = data4.loc[data4['Weather'] =='Freezing Precipitation'].count()[0]
+W2 = data4.loc[data4['Weather'] =='Cloudy'].count()[0]
+W3 = data4.loc[data4['Weather'] =='Clear'].count()[0]
+W4 = data4.loc[data4['Weather'] =='Wind'].count()[0]
+W5 = data4.loc[data4['Weather'] =='Rain'].count()[0]
+W6 = data4.loc[data4['Weather'] =='Unknown'].count()[0]
+
+
+#S1 = data4.loc[data4['SurfaceCondition'] =='Dry'].count()[0]
+#S2 = data4.loc[data4['SurfaceCondition'] =='Snow'].count()[0]
+#S3 = data4.loc[data4['SurfaceCondition'] =='Ice'].count()[0]
+#S4 = data4.loc[data4['SurfaceCondition'] =='Wet'].count()[0]
+#S5 = data4.loc[data4['SurfaceCondition'] =='Slush'].count()[0]  #Over 70% accidents occur on dry road
+
+
+
+plt.title('collisions in Vermont based on weather conditions')
+
+L = ['Snow','Cloudy','Clear', 'Rain', 'Unknown']
+e =(0,0,0,0,.1)
+plt.pie([W1, W2, W3, W5, W6], labels=L, autopct='%.2f %%', explode=e)
+plt.show()
